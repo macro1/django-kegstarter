@@ -18,7 +18,7 @@ backend:
 
 frontend:
   build: frontend
-  command: ember serve
+  command: ember serve --watcher polling
   ports:
     - "8080:8080"
   volumes:
