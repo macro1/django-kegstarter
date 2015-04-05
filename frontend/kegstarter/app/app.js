@@ -13,4 +13,9 @@ var App = Ember.Application.extend({
 
 loadInitializers(App, config.modulePrefix);
 
+Ember.RSVP.configure('onerror', function(e) {
+    console.log(e.message);
+    console.log(e.stack);
+});
+
 export default App;

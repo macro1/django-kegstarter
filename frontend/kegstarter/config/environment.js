@@ -20,6 +20,16 @@ module.exports = function(environment) {
   };
 
   if (environment === 'development') {
+    ENV.APP.contentSecurityPolicy = {
+      'default-src': "'self' 192.168.59.103:8080",
+      'script-src': "'self' 192.168.59.103:8080",
+      'font-src': "'self' 192.168.59.103:8080",
+      'connect-src': "'self' 192.168.59.103:8080",
+      'img-src': "'self' 192.168.59.103:8080",
+      'style-src': "'self' 192.168.59.103:8080",
+      'frame-src': "'self' 192.168.59.103:8080"
+    }
+    ENV.APP.API_HOST = 'http://192.168.59.103:8080'
     // ENV.APP.LOG_RESOLVER = true;
     // ENV.APP.LOG_ACTIVE_GENERATION = true;
     // ENV.APP.LOG_TRANSITIONS = true;

@@ -6,8 +6,9 @@ var Router = Ember.Router.extend({
 });
 
 Router.map(function() {
-//  this.resource('beer', function() {});
-  this.resource('beer');
+  this.resource('beer', {
+    path: '/kegmanager/api/beer/:pk'
+  }, function() {});
 });
 
 export default Router;

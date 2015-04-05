@@ -1,7 +1,5 @@
-import Ember from "ember";
-import DS from "ember-data";
+import ApplicationAdapter from './application';
 
-
-export default DS.RESTAdapter.extend({
-  namespace: "kegmanager/api"
+export default ApplicationAdapter.extend({
+  namespace: "kegmanager/api",
 });
