@@ -1,0 +1,17 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Breweries</h3>
+  </div>
+  <div class="panel-body">
+    Breweries listed here are meant to be a comprehensive list, more just a
+    list of Brewers than an owner of a {{#link-to "ledgers"}}Ledger{{/link-to}} is willing to drive to pick up
+    and drop off a {{#link-to "kegs"}}Keg{{/link-to}} from
+  </div>
+</div>
+
+<h3>The Breweries</h3>
+<ul>
+{{#each brewer in model}}
+<li>{{#link-to "brewer" brewer.id}}{{brewer.name}}{{/link-to}}</li>
+{{/each}}
+</ul>
