@@ -12,11 +12,11 @@ class LedgerViewSet(viewsets.ModelViewSet):
     queryset = Ledger.objects.all()
     serializer_class = serializers.LedgerSerializer
     permission_classes = [IsOwnerOrReadOnly]
-API_ROUTER.register(r'ledgers', LedgerViewSet)
+API_ROUTER.register(r'ledger', LedgerViewSet)
 
 
 class LedgerEntryViewSet(viewsets.ModelViewSet):
     queryset = LedgerEntry.objects.all()
     serializer_class = serializers.LedgerEntrySerializer
     permission_classes = [IsLedgerOwnerOrReadOnly]
-API_ROUTER.register(r'entries', LedgerEntryViewSet)
+API_ROUTER.register(r'entry', LedgerEntryViewSet)
