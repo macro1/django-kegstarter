@@ -14,5 +14,6 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     url(r'^kegledger/', include('kegstarter.kegledger.urls')),
     url(r'^kegmanager/', include('kegstarter.kegmanager.urls')),
+    url(r'^utils/', include('kegstarter.utils.urls')),
     url(r'^votingbooth/', include('kegstarter.votingbooth.urls')),
 ) + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

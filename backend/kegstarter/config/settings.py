@@ -38,6 +38,7 @@ class Common(Configuration):
     OUR_APPS = (
         'kegstarter.kegledger',
         'kegstarter.kegmanager',
+        'kegstarter.utils',
         'kegstarter.votingbooth',
     )
 
