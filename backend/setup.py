@@ -29,7 +29,8 @@ requirements = [
     'Django==1.7.4',
     'django-configurations==0.8',
     'dj-database-url==0.3.0',
-    'djangorestframework==3.0.5',
+    'djangorestframework==3.1.1',
+    'django-filter==0.9.2',
 ]
 
 

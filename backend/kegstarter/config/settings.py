@@ -94,6 +94,10 @@ class Common(Configuration):
         os.path.join(BASE_DIR, 'templates'),
     )
 
+    REST_FRAMEWORK = {
+        'DEFAULT_FILTER_BACKENDS': ('rest_framework.filters.DjangoFilterBackend',)
+    }
+
 
 class Local(Common):
     DJANGO_APPS = Common.DJANGO_APPS + ('django.contrib.webdesign',)

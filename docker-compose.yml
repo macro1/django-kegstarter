@@ -12,7 +12,7 @@ backend:
   ports:
     - "8000:8000"
   volumes:
-    - ./backend:/opt/kegstarter-django
+    - ./backend:/opt/backend
   links:
     - db
 
