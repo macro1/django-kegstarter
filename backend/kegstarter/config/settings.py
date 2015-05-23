@@ -99,8 +99,6 @@ class Local(Common):
 
     INSTALLED_APPS = DJANGO_APPS + Common.THIRDPARTY_APPS + Common.OUR_APPS
 
-    DATABASES = values.DatabaseURLValue('postgres://kegstarter:kegstarter@db:5432/kegstarter')
-
 
 class Testing(Common):
     DEFAULT_FILE_STORAGE = 'django.core.files.storage.FileSystemStorage'  # Aka fake storage... sorta
