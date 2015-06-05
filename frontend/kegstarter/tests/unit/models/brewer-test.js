@@ -5,7 +5,9 @@ import {
 
 moduleForModel('brewer', {
   // Specify the other units that are required for this test.
-  needs: []
+  needs: [
+    'model:beer',
+  ]
 });
 
 test('it exists', function(assert) {
