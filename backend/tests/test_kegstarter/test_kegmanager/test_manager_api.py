@@ -15,7 +15,7 @@ def test_staff_can_add_beer():
     beer = factories.BeerFactory(brewer=brewer)
     client = APIClient()
     client.force_authenticate(user=user)
-    data = {"brewer": reverse('brewer-detail', kwargs={'pk': brewer.id}),
+    data = {"brewer": brewer.id,
             "name": beer.name,
             "abv": beer.abv}
     response = client.post(reverse('beer-list'), data=data)
