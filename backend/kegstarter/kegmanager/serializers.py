@@ -9,27 +9,19 @@ class TapSerializer(serializers.ModelSerializer):
         fields = ('pk', 'location')
 
 
-class BeerSerializer(serializers.HyperlinkedModelSerializer):
-    brewer = serializers.HyperlinkedRelatedField(
-        read_only=False,
-        queryset=models.Brewer.objects.all(),
-        view_name='brewer-detail')
-
+class BeerSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.Beer
-        fields = ('url', 'pk', 'name', 'brewer', 'abv')
-        depth = 1
+        fields = ('pk', 'name', 'brewer', 'abv')
 
 
 class BrewerSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.Brewer
-        fields = ('pk', 'name')
-        depth = 1
+        fields = ('pk', 'name', 'beer_set')
 
 
 class KegSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.Keg
-        depth = 1
         fields = ('pk', 'beer', 'gallons', 'purchase_date', 'tap')

@@ -13,7 +13,7 @@ def test_cannot_edit_ledger_owned_by_other_user():
     ledger = factories.LedgerFactory()
     client = APIClient()
     client.force_authenticate(user=user)
-    data = {"name": "sodifnoiwnlsdinfoiwenlsdkn", "user": ledger.user.id}
+    data = {"name": "sodifnoiwnlsdinfoiwenlsdkn", "user": reverse('user-detail', kwargs={'pk': ledger.user.pk})}
     response = client.put(reverse('ledger-detail', kwargs={'pk': ledger.id}), data, format='json')
     assert response.status_code == status.HTTP_403_FORBIDDEN
 
@@ -37,7 +37,9 @@ def test_ledger_owner_can_add_entry():
     ledger = factories.LedgerFactory(user=user)
     client = APIClient()
     client.force_authenticate(user=user)
-    data = {"amount": 10, "time": "2015-03-28T20:43:21Z", "ledger": ledger.id, "user": user.id}
+    data = {"amount": 10, "time": "2015-03-28T20:43:21Z",
+            "ledger": reverse('ledger-detail', kwargs={'pk': ledger.pk}),
+            "user": reverse('user-detail', kwargs={'pk': user.pk})}
     response = client.post(reverse('ledgerentry-list'), data, format='json')
     assert response.status_code == status.HTTP_201_CREATED
 

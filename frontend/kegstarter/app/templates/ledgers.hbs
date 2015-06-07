@@ -1,0 +1,17 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Ledgers</h3>
+  </div>
+  <div class="panel-body">
+    Ledgers are owned by a single person who keeps track of how much money has
+    been received from whom. The idea being that if there's someone with a
+    discount on some kegs, keeping a separate "account" may make sense.
+  </div>
+</div>
+
+<ul>
+{{#each ledger in model}}
+  <li>{{#link-to "ledger" ledger.id}}{{ledger.name}}{{/link-to}}</li>
+{{/each}}
+</ul>
+

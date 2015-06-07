@@ -1,0 +1,5 @@
+<ul>
+{{#each beer in model}}
+<li>Beer: {{#link-to "beer" beer.id}}{{beer.name}}{{/link-to}}</li>
+{{/each}}
+</ul>

@@ -1,0 +1,13 @@
+<h3>{{model.name}}</h3>
+<table class="table table-condensed">
+  <tr>
+    <th>Beer</th>
+    <th>ABV</th>
+  </tr>
+  {{#each beer in model.beerSet}}
+  <tr>
+    <td>{{beer.name}}</td>
+    <td>{{beer.abv}}</td>
+  </tr>
+  {{/each}}
+</table>

@@ -38,6 +38,7 @@ class Common(Configuration):
     OUR_APPS = (
         'kegstarter.kegledger',
         'kegstarter.kegmanager',
+        'kegstarter.utils',
         'kegstarter.votingbooth',
     )
 
@@ -92,6 +93,10 @@ class Common(Configuration):
     TEMPLATE_DIRS = (
         os.path.join(BASE_DIR, 'templates'),
     )
+
+    REST_FRAMEWORK = {
+        'DEFAULT_FILTER_BACKENDS': ('rest_framework.filters.DjangoFilterBackend',)
+    }
 
 
 class Local(Common):
