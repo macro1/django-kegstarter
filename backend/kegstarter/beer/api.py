@@ -18,10 +18,3 @@ class BrewerViewSet(viewsets.ModelViewSet):
     serializer_class = serializers.BrewerSerializer
     permission_classes = [IsStaffOrReadOnly]
 API_ROUTER.register(r'brewer', BrewerViewSet)
-
-
-class KegViewSet(viewsets.ModelViewSet):
-    queryset = models.Keg.objects.all()
-    serializer_class = serializers.KegSerializer
-    permission_classes = [IsStaffOrReadOnly]
-API_ROUTER.register(r'keg', KegViewSet)

@@ -3,7 +3,7 @@ from datetime import datetime
 from django.core.exceptions import ValidationError
 import pytest
 
-from ..test_kegmanager import factories as keg_factories
+from ..test_keg import factories as keg_factories
 from . import factories as vote_factories
 
 

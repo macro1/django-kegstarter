@@ -9,18 +9,6 @@ class TapSerializer(serializers.ModelSerializer):
         fields = ('pk', 'location')
 
 
-class BeerSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = models.Beer
-        fields = ('pk', 'name', 'brewer', 'abv')
-
-
-class BrewerSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = models.Brewer
-        fields = ('pk', 'name', 'beer_set')
-
-
 class KegSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.Keg

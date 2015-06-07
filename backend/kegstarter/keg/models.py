@@ -20,30 +20,6 @@ class Tap(models.Model):
         return self.location
 
 
-class Brewer(models.Model):
-    """The creator (either a person or company) of the beer.
-
-    "Beer is proof that God loves us and wants us to be happy"
-        - Misquoted from Benjamin Franklin
-    """
-
-    name = models.CharField(max_length=255)
-
-    def __str__(self):
-        return self.name
-
-
-class Beer(models.Model):
-    """The specific name of the particular beer. Beers tend to have... creative names."""
-
-    brewer = models.ForeignKey(Brewer)
-    name = models.CharField(max_length=1024)  # Might not be supported on all DBs?
-    abv = models.DecimalField(max_digits=5, decimal_places=2, help_text="Alcohol by Volume (in percent)")
-
-    def __str__(self):
-        return "{} - {}".format(self.brewer, self.name)
-
-
 class Keg(models.Model):
     """
     The liquid in the keg, not the container. The container is merely an
@@ -55,13 +31,13 @@ class Keg(models.Model):
     This is my beer. There are many like it but this one is mine.
     """
 
-    beer = models.ForeignKey(Beer)
+    beer = models.ForeignKey('beer.Beer')
     # django-measurements doesn't support Django 1.7, or we'd use that to make
     # a MeasurementField. We force a single
     # unit of measurement to make it easier to write a migration when
     # django-measurements gets updated.
     gallons = models.DecimalField(max_digits=4, decimal_places=2)
-    ledger_entry = models.ForeignKey('kegledger.LedgerEntry', blank=False, null=False,
+    ledger_entry = models.ForeignKey('ledger.LedgerEntry', blank=False, null=False,
         help_text="You bought it, there better be a trackable transaction "
             "associated with it. Don't include the keg deposit")
     purchase_date = models.DateField(blank=True, null=True)

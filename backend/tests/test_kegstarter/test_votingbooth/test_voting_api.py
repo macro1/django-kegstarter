@@ -7,7 +7,7 @@ from rest_framework.test import APIClient
 
 from kegstarter.votingbooth.models import Vote, Poll
 from .. import django_factories
-from ..test_kegmanager import factories as keg_factories
+from ..test_keg import factories as keg_factories
 from . import factories as vote_factories
 
 
