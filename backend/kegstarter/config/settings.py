@@ -36,6 +36,7 @@ class Common(Configuration):
     )
 
     OUR_APPS = (
+        'kegstarter.api',
         'kegstarter.beer',
         'kegstarter.ledger',
         'kegstarter.keg',

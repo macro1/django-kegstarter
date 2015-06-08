@@ -15,7 +15,7 @@ def test_staff_can_delete_keg():
     client = APIClient()
     client.force_authenticate(user=user)
     original_keg_count = Keg.objects.all().count()
-    response = client.delete(reverse('keg-detail', kwargs={'pk': keg.id}))
+    response = client.delete(reverse('keg-keg-detail', kwargs={'pk': keg.id}))
     new_keg_count = Keg.objects.all().count()
     assert new_keg_count == original_keg_count - 1
     assert response.status_code == status.HTTP_204_NO_CONTENT
@@ -28,7 +28,7 @@ def test_non_staff_cannot_delete_keg():
     client = APIClient()
     client.force_authenticate(user=user)
     original_keg_count = Keg.objects.all().count()
-    response = client.delete(reverse('keg-detail', kwargs={'pk': keg.id}))
+    response = client.delete(reverse('keg-keg-detail', kwargs={'pk': keg.id}))
     new_keg_count = Keg.objects.all().count()
     assert new_keg_count == original_keg_count
     assert response.status_code == status.HTTP_403_FORBIDDEN

@@ -3,13 +3,13 @@ from rest_framework import serializers
 from . import models
 
 
-class LedgerSerializer(serializers.HyperlinkedModelSerializer):
+class LedgerSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.Ledger
-        fields = ('url', 'pk', 'name', 'user')
+        fields = ('pk', 'name', 'user')
 
 
-class LedgerEntrySerializer(serializers.HyperlinkedModelSerializer):
+class LedgerEntrySerializer(serializers.ModelSerializer):
     class Meta:
         model = models.LedgerEntry
-        fields = ('url', 'pk', 'amount', 'time', 'ledger', 'notes', 'user', 'guest_name')
+        fields = ('pk', 'amount', 'time', 'ledger', 'notes', 'user', 'guest_name')

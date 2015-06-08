@@ -1,11 +1,12 @@
-from rest_framework import viewsets, routers
+from rest_framework import viewsets
 
+from kegstarter.api import routers
 from kegstarter.utils.permissions import IsOwnerOrReadOnly
 from .models import Ledger, LedgerEntry
 from .permissions import IsLedgerOwnerOrReadOnly
 from . import serializers
 
-API_ROUTER = routers.DefaultRouter()
+API_ROUTER = routers.api_router.app_router('ledger')
 
 
 class LedgerViewSet(viewsets.ModelViewSet):

@@ -1,9 +1,10 @@
-from rest_framework import viewsets, routers
+from rest_framework import viewsets
 
+from kegstarter.api import routers
 from kegstarter.utils.permissions import IsStaffOrReadOnly
 from . import models, serializers
 
-API_ROUTER = routers.SimpleRouter()
+API_ROUTER = routers.api_router.app_router('beer')
 
 
 class BeerViewSet(viewsets.ModelViewSet):

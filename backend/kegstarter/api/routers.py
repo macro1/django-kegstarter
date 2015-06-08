@@ -14,8 +14,9 @@ class AppRouter(routers.DefaultRouter):
         return arc
 
     def get_urls(self):
-        return list(url for suburls in self._children
+        urls= list(url for suburls in self._children
                     for url in suburls.get_urls())
+        return urls
 
 
 class AppRouterChild(routers.DefaultRouter):

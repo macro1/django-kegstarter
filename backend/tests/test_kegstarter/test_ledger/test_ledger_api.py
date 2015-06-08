@@ -14,7 +14,7 @@ def test_cannot_edit_ledger_owned_by_other_user():
     client = APIClient()
     client.force_authenticate(user=user)
     data = {"name": "sodifnoiwnlsdinfoiwenlsdkn", "user": reverse('user-detail', kwargs={'pk': ledger.user.pk})}
-    response = client.put(reverse('ledger-detail', kwargs={'pk': ledger.id}), data, format='json')
+    response = client.put(reverse('ledger-ledger-detail', kwargs={'pk': ledger.id}), data, format='json')
     assert response.status_code == status.HTTP_403_FORBIDDEN
 
 
@@ -27,7 +27,7 @@ def test_cannot_edit_ledger_entry_unless_you_own_ledger():
     client = APIClient()
     client.force_authenticate(user=user)
     data = {"amount": 10, "time": "2015-03-28T20:43:21Z", "ledger": ledger.id}
-    response = client.put(reverse('ledgerentry-detail', kwargs={'pk': ledger_entry.id}), data, format='json')
+    response = client.put(reverse('ledger-ledgerentry-detail', kwargs={'pk': ledger_entry.id}), data, format='json')
     assert response.status_code == status.HTTP_403_FORBIDDEN
 
 
@@ -38,9 +38,9 @@ def test_ledger_owner_can_add_entry():
     client = APIClient()
     client.force_authenticate(user=user)
     data = {"amount": 10, "time": "2015-03-28T20:43:21Z",
-            "ledger": reverse('ledger-detail', kwargs={'pk': ledger.pk}),
-            "user": reverse('user-detail', kwargs={'pk': user.pk})}
-    response = client.post(reverse('ledgerentry-list'), data, format='json')
+            "ledger": ledger.pk,
+            "user": user.pk}
+    response = client.post(reverse('ledger-ledgerentry-list'), data, format='json')
     assert response.status_code == status.HTTP_201_CREATED
 
 
@@ -51,7 +51,7 @@ def test_ledger_owner_can_delete_entry():
     ledger_entry = factories.LedgerEntryFactoryRegistered(ledger=ledger)
     client = APIClient()
     client.force_authenticate(user=ledger_owner)
-    response = client.delete(reverse('ledgerentry-detail', kwargs={'pk': ledger_entry.pk}), format='json')
+    response = client.delete(reverse('ledger-ledgerentry-detail', kwargs={'pk': ledger_entry.pk}), format='json')
     assert response.status_code == status.HTTP_204_NO_CONTENT
 
 
@@ -62,7 +62,7 @@ def test_non_ledger_owner_cannot_add_entry():
     client = APIClient()
     client.force_authenticate(user=user)
     data = {"amount": 10, "time": "2015-03-28T20:43:21Z", "ledger": ledger.id, "guest_name": "A Guest!"}
-    response = client.post(reverse('ledgerentry-list'), data, format='json')
+    response = client.post(reverse('ledger-ledgerentry-list'), data, format='json')
     assert response.status_code == status.HTTP_403_FORBIDDEN
 
 
@@ -73,5 +73,5 @@ def test_anyone_can_view_ledger():
     ledger_entry = factories.LedgerEntryFactoryRegistered(ledger=ledger)
     client = APIClient()
     client.force_authenticate(user=user)
-    response = client.get(reverse('ledgerentry-detail', kwargs={'pk': ledger_entry.pk}), format='json')
+    response = client.get(reverse('ledger-ledgerentry-detail', kwargs={'pk': ledger_entry.pk}), format='json')
     assert response.status_code == status.HTTP_200_OK

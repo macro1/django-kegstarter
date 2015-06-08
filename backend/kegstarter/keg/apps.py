@@ -1,6 +1,8 @@
 from django.apps import AppConfig
 
 
-class KegManagerApp(AppConfig):
-    name = 'kegstarter.kegmanager'
-    verbose_name = 'Keg Manager'
+class KegApp(AppConfig):
+    name = 'kegstarter.keg'
+
+    def ready(self):
+        from . import api  # noqa

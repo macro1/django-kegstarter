@@ -1,8 +1,8 @@
 from django.apps import AppConfig
 
 
-class LedgerApp(AppConfig):
-    name = 'kegstarter.ledger'
+class BeerApp(AppConfig):
+    name = 'kegstarter.beer'
 
     def ready(self):
         from . import api  # noqa

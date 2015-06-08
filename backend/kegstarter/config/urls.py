@@ -12,6 +12,7 @@ urlpatterns = patterns('',
 
     url(r'^$', TemplateView.as_view(template_name="base.html"), name='home'),
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^api/', include('kegstarter.api.urls')),
     url(r'^beer/', include('kegstarter.beer.urls')),
     url(r'^ledger/', include('kegstarter.ledger.urls')),
     url(r'^keg/', include('kegstarter.keg.urls')),

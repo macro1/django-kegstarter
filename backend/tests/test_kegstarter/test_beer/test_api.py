@@ -17,7 +17,7 @@ def test_staff_can_add_beer():
     data = {"brewer": brewer.id,
             "name": beer.name,
             "abv": beer.abv}
-    response = client.post(reverse('beer-list'), data=data)
+    response = client.post(reverse('beer-beer-list'), data=data)
     assert response.status_code == status.HTTP_201_CREATED
 
 
@@ -28,9 +28,9 @@ def test_non_staff_cannot_add_beer():
     beer = factories.BeerFactory(brewer=brewer)
     client = APIClient()
     client.force_authenticate(user=user)
-    data = {"brewer": reverse('brewer-detail', kwargs={'pk': brewer.id}),
+    data = {"brewer": reverse('beer-brewer-detail', kwargs={'pk': brewer.id}),
             "name": beer.name, "abv": beer.abv}
-    response = client.post(reverse('beer-list'), data=data)
+    response = client.post(reverse('beer-beer-list'), data=data)
     assert response.status_code == status.HTTP_403_FORBIDDEN
 
 
@@ -41,7 +41,7 @@ def test_staff_can_edit_brewer():
     old_brewer_name = brewer.name
     client = APIClient()
     client.force_authenticate(user=user)
-    response = client.put(reverse('brewer-detail', kwargs={'pk': brewer.id}),
+    response = client.put(reverse('beer-brewer-detail', kwargs={'pk': brewer.id}),
                           data={"name": 'new_{}'.format(old_brewer_name)})
     assert response.data['name'] == 'new_{}'.format(old_brewer_name)
     assert response.status_code == status.HTTP_200_OK
@@ -54,7 +54,7 @@ def test_non_staff_cannot_edit_brewer():
     old_brewer_name = brewer.name
     client = APIClient()
     client.force_authenticate(user=user)
-    response = client.put(reverse('brewer-detail', kwargs={'pk': brewer.id}),
+    response = client.put(reverse('beer-brewer-detail', kwargs={'pk': brewer.id}),
                           data={"name": 'new_{}'.format(old_brewer_name)})
     assert brewer.name != 'new_{}'.format(old_brewer_name)
     assert response.status_code == status.HTTP_403_FORBIDDEN
