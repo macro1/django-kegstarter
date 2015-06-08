@@ -17,8 +17,7 @@ class ListDeps(Command):
         requirements = self.distribution.install_requires[:]
         requirements.extend(req
             for key in extras
-            for req in self.distribution.extras_require[key]
-        )
+            for req in self.distribution.extras_require[key])
         self.announce(' '.join(requirements), log.INFO)
 
     def run(self):
