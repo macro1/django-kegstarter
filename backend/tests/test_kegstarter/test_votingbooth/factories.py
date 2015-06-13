@@ -2,7 +2,7 @@ import factory
 
 from ..django_factories import UserFactory
 
-from ..test_kegmanager.factories import KegFactory
+from ..test_keg.factories import KegFactory
 
 
 class PollFactory(factory.django.DjangoModelFactory):

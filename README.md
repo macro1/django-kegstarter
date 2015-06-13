@@ -25,3 +25,12 @@ Drink responsibly.
 
 This is a lighthearted project, loosely based on the kickstarter idea,
 and is not meant for commercial purposes.
+
+
+Ember App
+---------
+
+This is mostly a learning experience for me with Ember.js, so if I do
+something completely brain dead PLEASE CALL ME OUT ON IT. It wouldn't be
+the first time I've commited a stupid to a code repo, and it sure as
+heck isn't going to be the last.

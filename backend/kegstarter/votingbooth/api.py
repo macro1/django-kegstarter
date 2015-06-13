@@ -1,13 +1,14 @@
-from rest_framework import viewsets, routers
+from rest_framework import viewsets
 from rest_framework.permissions import SAFE_METHODS, IsAdminUser
 
+from kegstarter.api import routers
 from .models import Poll, Rating, Vote
 from .permissions import PollIsNotClosed
 from . import serializers
 from ..utils.permissions import IsOwnerOrReadOnly
 
 
-API_ROUTER = routers.DefaultRouter()
+API_ROUTER = routers.api_router.app_router('votingbooth')
 
 # To set different permissions for list and detail:
 # http://stackoverflow.com/questions/25283797/django-rest-framework-add-additional-permission-in-viewset-update-method

@@ -15,7 +15,7 @@ def test_cannot_edit_rating_made_by_other_user():
     client = APIClient()
     client.force_authenticate(user)
     data = {"stars": 3, "keg": rating.keg.id, "user": rating.user.id}
-    response = client.put(reverse('rating-detail', kwargs={'pk': rating.id}), data, format='json')
+    response = client.put(reverse('votingbooth-rating-detail', kwargs={'pk': rating.id}), data, format='json')
     assert response.status_code == status.HTTP_403_FORBIDDEN
 
 
@@ -26,6 +26,6 @@ def test_owner_can_modify_own_keg_rating():
     client = APIClient()
     client.force_authenticate(user)
     data = {"stars": 3, "keg": rating.keg.id, "user": user.id}
-    response = client.put(reverse('rating-detail', kwargs={'pk': rating.id}), data=data, format='json')
+    response = client.put(reverse('votingbooth-rating-detail', kwargs={'pk': rating.id}), data=data, format='json')
     assert Rating.objects.get(id=rating.id).stars == 3
     assert response.status_code == status.HTTP_200_OK
