@@ -19,6 +19,12 @@ Goals
 * Track what's currently in the kegerator, what tap it's on, etc.
 
 
+Running a dev server
+====================
+* In one terminal in the front end directory
+  `ember build -w -o ../backend/kegstarter/static/build/`
+* In another terminal `manage.py runserver`
+
 Disclaimers
 ===========
 Drink responsibly.
