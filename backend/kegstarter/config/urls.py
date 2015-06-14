@@ -10,7 +10,7 @@ urlpatterns = patterns('',
     # url(r'^$', 'kegstarter.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
 
-    url(r'^$', TemplateView.as_view(template_name="base.html"), name='home'),
+    url(r'^$', 'django.views.static.serve', {'path': 'build/index.html', 'document_root': settings.STATICFILES_DIRS[0]}),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^api/', include('kegstarter.api.urls')),
     url(r'^beer/', include('kegstarter.beer.urls')),
