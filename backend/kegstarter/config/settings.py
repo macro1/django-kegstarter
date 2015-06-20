@@ -89,7 +89,7 @@ class Common(Configuration):
     STATIC_URL = '/static/'
     STATIC_ROOT = values.Value(os.path.abspath(os.path.join(BASE_DIR, '..', 'collected_static', '')))
     STATICFILES_DIRS = (
-        os.path.abspath(os.path.join(BASE_DIR, 'static')),
+        os.path.abspath(os.path.join(BASE_DIR, '..', '..', 'frontend', 'dist')),
     )
 
     TEMPLATE_DIRS = (
